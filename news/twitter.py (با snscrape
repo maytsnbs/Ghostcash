@@ -1,0 +1,9 @@
+import snscrape.modules.twitter as sntwitter
+
+def get_twitter_news():
+    tweets = []
+    for tweet in sntwitter.TwitterSearchScraper("bitcoin OR ethereum OR crypto since:2024-01-01").get_items():
+        if len(tweets) > 10:
+            break
+        tweets.append(f"Twitter: {tweet.content}")
+    return tweets
